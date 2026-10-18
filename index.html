@@ -3,28 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#faf9fd" />
+    <meta name="theme-color" content="#0b1620" />
     <meta
       name="description"
       content="Inside Relay: building a company brain with FalkorDB, connected evidence, and agents that wait for the right human approval. A Graph Hacks build story by Ayush Paul."
     />
     <meta property="og:type" content="article" />
-    <meta
-      property="og:title"
-      content="A company brain. With a path to action. — Relay"
-    />
+    <meta property="og:title" content="Intelligence, with roots. — Relay" />
     <meta
       property="og:description"
       content="The story behind Relay: connected company knowledge, a real graph, and a carefully placed human yes."
     />
     <meta property="og:image" content="/assets/social-cover.png" />
+    <meta
+      property="og:image:alt"
+      content="Relay’s illustrated tree world above the clouds, with the headline Intelligence, with roots."
+    />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="author" content="Ayush Paul" />
-    <title>Building Relay — A company brain with a path to action</title>
+    <title>Relay — Intelligence, with roots.</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link
       rel="preload"
-      href="/fonts/sora-latin-600-normal.woff2"
+      href="/fonts/cormorant-garamond-latin-500-normal.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -37,7 +38,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="/assets/styles.css" />
-    <link rel="stylesheet" href="/assets/story.css" />
+    <link rel="stylesheet" href="/assets/forest.css" />
     <script type="module" src="/assets/main.js"></script>
   </head>
   <body>
@@ -46,14 +47,14 @@
       <span id="reading-progress"></span>
     </div>
     <header class="site-header shell">
-      <a class="brand" href="#top" aria-label="Relay. The build journal — home"
+      <a class="brand" href="#top" aria-label="Relay. Field notes — home"
         ><img src="/favicon.svg" width="30" height="30" alt="" /><span
           class="wordmark"
           >relay.</span
-        ><span class="brand-note">THE BUILD JOURNAL</span></a
+        ><span class="brand-note">FIELD NOTES</span></a
       >
       <nav class="header-nav" aria-label="Main navigation">
-        <a href="#journey">The story</a><a href="#graph">Inside the graph</a
+        <a href="#journey">The tree</a><a href="#story">The story</a
         ><a href="#lessons">Lessons</a>
       </nav>
       <a
@@ -68,565 +69,297 @@
     </header>
 
     <main id="top">
-      <section class="hero shell" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">
-            <span class="tiny-dot"></span> GRAPH HACKS 2026
-            <span class="eyebrow-divider">/</span> COMPANY BRAIN
-          </p>
-          <h1 id="hero-title">
-            A company brain.<br />With a path<br />to
-            <span class="word-action"
-              >action<svg viewBox="0 0 250 15" aria-hidden="true">
-                <path d="M3 11Q103 0 245 7" /></svg></span
-            >.
-          </h1>
-          <p class="hero-deck">
-            Your company already has the answers.<br class="desktop-break" />
-            The hard part is connecting them—and knowing<br
-              class="desktop-break"
-            />
-            what should happen next.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#journey"
-              >Step inside the story <span aria-hidden="true">↓</span></a
-            ><a
-              class="text-link"
-              href="https://github.com/AyushPaul26/wemakedevs"
-              target="_blank"
-              rel="noopener noreferrer"
-              >Explore the code
-              <span aria-hidden="true"
-                ><span class="north-east" aria-hidden="true"></span></span
-            ></a>
-          </div>
-          <div class="byline">
-            <span class="avatar" aria-hidden="true">AP</span
-            ><span
-              ><strong>Ayush Paul</strong
-              ><span
-                >18 October 2026 <span aria-hidden="true">·</span>
-                <span id="reading-time">6 min read</span></span
-              ></span
-            >
-          </div>
-        </div>
-        <div
-          class="hero-art"
-          aria-label="Illustration of company context connecting to an approved action"
-        >
-          <div class="art-label">
-            <span class="tiny-dot"></span> A LITTLE CONTEXT GOES A LONG WAY
-          </div>
-          <svg
-            class="hero-network"
-            viewBox="0 0 490 440"
+      <section
+        class="forest-experience"
+        id="journey"
+        aria-label="The living intelligence tree"
+      >
+        <div class="forest-sticky">
+          <div
+            class="forest-scene"
+            id="tree-scene"
             role="img"
-            aria-labelledby="network-title network-desc"
+            aria-label="One continuous illustrated tree world: canopy, connected platforms, and a glowing root core, explored through a day-to-night scroll journey"
           >
-            <title id="network-title">
-              From connected knowledge to approved work
-            </title>
-            <desc id="network-desc">
-              Company documents, project context, and a Finance reviewer connect
-              through Relay. An approved workflow produces a report with an
-              execution receipt.
-            </desc>
-            <defs>
-              <pattern
-                id="dots"
-                width="22"
-                height="22"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle cx="1" cy="1" r="1" fill="#d6cdeb" />
-              </pattern>
-            </defs>
-            <rect width="490" height="440" fill="url(#dots)" opacity=".7" />
-            <g
-              class="network-lines"
-              fill="none"
-              stroke="#c4b7e5"
-              stroke-width="1.5"
-            >
-              <path d="M123 108C123 185 212 128 244 211" />
-              <path d="M375 120C375 173 289 153 257 211" />
-              <path d="M95 293C161 293 163 254 222 239" />
-              <path d="M265 249C295 303 326 311 349 350" />
-            </g>
-            <g class="flow-line" fill="none" stroke="#8d75cf" stroke-width="2">
-              <path d="M123 108C123 185 212 128 244 211" />
-              <path d="M265 249C295 303 326 311 349 350" />
-            </g>
-            <g class="svg-card">
-              <rect x="35" y="45" width="173" height="70" rx="13" />
-              <rect
-                class="svg-icon-bg"
-                x="49"
-                y="62"
-                width="32"
-                height="32"
-                rx="9"
+            <div class="tree-fallback" id="tree-fallback" aria-hidden="true">
+              <img
+                class="world-poster"
+                src="/assets/living-world.webp"
+                width="1024"
+                height="1536"
+                alt=""
+                fetchpriority="high"
               />
-              <path
-                d="M59 70h10v15H59zm3 4h4m-4 4h4"
-                fill="none"
-                stroke="#6b50bc"
-                stroke-width="1.5"
-              />
-              <text x="92" y="76" class="svg-title">The evidence</text>
-              <text x="92" y="94" class="svg-small">
-                Documents &amp; versions
-              </text>
-            </g>
-            <g class="svg-card">
-              <rect x="294" y="64" width="169" height="70" rx="13" />
-              <rect
-                class="svg-icon-bg"
-                x="307"
-                y="81"
-                width="32"
-                height="32"
-                rx="9"
-              />
-              <path
-                d="m316 97 6-6 6 6-6 6zm6-6v-4"
-                fill="none"
-                stroke="#6b50bc"
-                stroke-width="1.5"
-              />
-              <text x="350" y="94" class="svg-title">The context</text>
-              <text x="350" y="112" class="svg-small">
-                People &amp; dependencies
-              </text>
-            </g>
-            <circle cx="245" cy="230" r="73" fill="#e8e0f7" opacity=".65" />
-            <circle cx="245" cy="230" r="58" fill="#dfd4f4" opacity=".7" />
-            <rect
-              x="201"
-              y="186"
-              width="88"
-              height="88"
-              rx="25"
-              fill="#6246ce"
-              transform="rotate(-8 245 230)"
-            />
-            <path
-              d="M232 247v-33m5 28 23-22"
-              fill="none"
-              stroke="#fff"
-              stroke-width="2.5"
-            />
-            <g fill="#6246ce" stroke="#fff" stroke-width="2.5">
-              <circle cx="232" cy="249" r="7" />
-              <circle cx="262" cy="217" r="7" />
-            </g>
-            <g class="svg-card">
-              <rect x="19" y="289" width="177" height="70" rx="13" />
-              <circle cx="48" cy="323" r="16" fill="#f1eafa" />
-              <path
-                d="M42 328c0-6 12-6 12 0m-3-12a3 3 0 1 1-6 0 3 3 0 0 1 6 0"
-                fill="none"
-                stroke="#6b50bc"
-                stroke-width="1.5"
-              />
-              <text x="73" y="320" class="svg-title">The human yes</text>
-              <text x="73" y="339" class="svg-small">
-                Scoped Finance approval
-              </text>
-            </g>
-            <g class="svg-card output-card">
-              <rect x="267" y="341" width="202" height="72" rx="13" />
-              <circle cx="295" cy="376" r="15" fill="#dceee4" />
-              <path
-                d="m288 376 5 5 9-10"
-                fill="none"
-                stroke="#24674f"
-                stroke-width="2"
-              />
-              <text x="320" y="372" class="svg-title">
-                Work, with a receipt.
-              </text>
-              <text x="320" y="392" class="svg-small">
-                Report + internal case
-              </text>
-            </g>
-            <text
-              x="297"
-              y="282"
-              class="svg-edge-label"
-              transform="rotate(38 297 282)"
-            >
-              APPROVED PATH
-            </text>
-          </svg>
-          <div class="art-footer">
-            <span>CONNECTED KNOWLEDGE → APPROVED ACTION</span
-            ><span class="art-index" aria-hidden="true"
-              ><span class="north-east" aria-hidden="true"></span
-            ></span>
-          </div>
-        </div>
-      </section>
-
-      <div class="context-strip">
-        <div class="shell">
-          <span>BUILT FOR THE SPACE BETWEEN</span>
-          <p>
-            “Who knows this?” <span aria-hidden="true">↔</span> “What happens
-            next?”
-          </p>
-          <span class="context-tech"
-            >FalkorDB <i aria-hidden="true">+</i> LangGraph</span
-          >
-        </div>
-      </div>
-
-      <section class="journey" id="journey" aria-labelledby="journey-title">
-        <div class="shell">
-          <div class="journey-heading">
-            <div>
-              <p class="section-kicker">A QUESTION BECOMES A WORKFLOW</p>
-              <h2 id="journey-title">
-                Keep scrolling.<br /><span>Watch the dots connect.</span>
-              </h2>
-              <p>
-                Follow one piece of work from scattered evidence to a decision
-                you can trace.
-              </p>
             </div>
+          </div>
+          <div class="forest-shade" aria-hidden="true"></div>
+          <div class="forest-caption">
+            <span class="caption-seed" aria-hidden="true"></span> INTERACTIVE
+            ILLUSTRATION <span class="caption-divider">/</span> FICTIONAL
+            COMPANY DATA
+          </div>
+          <div class="forest-utility">
+            <p id="tree-load-status" role="status">
+              Explore the tree, then the thinking behind it.
+            </p>
             <button
-              class="motion-toggle"
               id="motion-toggle"
+              class="forest-motion"
               type="button"
               aria-pressed="false"
               hidden
             >
-              <span class="motion-icon" aria-hidden="true"></span
-              ><span id="motion-label">Reduce motion</span>
+              <span class="motion-bars" aria-hidden="true"></span
+              ><span id="motion-label">Pause motion</span>
             </button>
           </div>
-
-          <div class="journey-layout">
-            <div class="journey-notes">
-              <section
-                class="journey-beat"
-                id="scene-evidence"
-                data-beat="0"
-                aria-labelledby="beat-evidence-title"
+          <nav class="forest-scene-nav" aria-label="Explore the tree" hidden>
+            <button type="button" data-forest-scene="0" aria-pressed="true">
+              <span class="scene-dot" aria-hidden="true"></span
+              ><span>Awakening</span>
+            </button>
+            <button type="button" data-forest-scene="1" aria-pressed="false">
+              <span class="scene-dot" aria-hidden="true"></span
+              ><span>Heart</span>
+            </button>
+            <button type="button" data-forest-scene="2" aria-pressed="false">
+              <span class="scene-dot" aria-hidden="true"></span
+              ><span>Branches</span>
+            </button>
+            <button type="button" data-forest-scene="3" aria-pressed="false">
+              <span class="scene-dot" aria-hidden="true"></span
+              ><span>Roots</span>
+            </button>
+            <button type="button" data-forest-scene="4" aria-pressed="false">
+              <span class="scene-dot" aria-hidden="true"></span
+              ><span>Action</span>
+            </button>
+            <button type="button" data-forest-scene="5" aria-pressed="false">
+              <span class="scene-dot" aria-hidden="true"></span
+              ><span>Ecosystem</span>
+            </button>
+          </nav>
+        </div>
+        <div class="forest-chapters">
+          <section
+            class="forest-chapter awakening"
+            id="awakening"
+            data-chapter="0"
+            aria-labelledby="hero-title"
+          >
+            <div class="chapter-copy">
+              <p class="forest-eyebrow">RELAY / A COMPANY BRAIN</p>
+              <h1 id="hero-title">Intelligence,<br /><em>with roots.</em></h1>
+              <p class="chapter-deck">
+                A company brain, rooted in evidence. Relay connects what your
+                company knows to what happens next—with a human hand on the
+                decisions that matter.
+              </p>
+              <a class="forest-primary" href="#heart"
+                >Enter the ecosystem <span aria-hidden="true">↓</span></a
               >
-                <span class="beat-index">01 <span>GATHER</span></span>
-                <h3 id="beat-evidence-title">
-                  The facts exist.<br />
-                  The connections<br />
-                  are missing.
-                </h3>
-                <p>
-                  A project has context. Finance has documents. Someone still
-                  has to connect the work.
-                </p>
-                <span class="beat-detail"
-                  >One company. Different pieces of the answer.</span
-                >
-              </section>
-              <section
-                class="journey-beat"
-                id="scene-connections"
-                data-beat="1"
-                aria-labelledby="beat-connections-title"
-              >
-                <span class="beat-index">02 <span>CONNECT</span></span>
-                <h3 id="beat-connections-title">
-                  Give the company<br />
-                  a shared memory.
-                </h3>
-                <p>
-                  Relay connects owners, dependencies, and evidence. Company
-                  research can continue while protected Finance processing
-                  waits.
-                </p>
-                <span class="beat-detail"
-                  >Relationships become a path through the work.</span
-                >
-              </section>
-              <section
-                class="journey-beat"
-                id="scene-permission"
-                data-beat="2"
-                aria-labelledby="beat-permission-title"
-              >
-                <span class="beat-index">03 <span>ASK</span></span>
-                <h3 id="beat-permission-title">
-                  One decision<br />
-                  belongs to a human.
-                </h3>
-                <p>
-                  The auditor reviews the exact document versions, permitted
-                  tools, and output audience before Finance processing proceeds.
-                </p>
-                <span class="beat-detail"
-                  >Try the sample approval in the illustration.</span
-                >
-              </section>
-              <section
-                class="journey-beat"
-                id="scene-outcome"
-                data-beat="3"
-                aria-labelledby="beat-receipt-title"
-              >
-                <span class="beat-index"
-                  >04 <span>ACT &amp; REMEMBER</span></span
-                >
-                <h3 id="beat-receipt-title">
-                  The work moves.<br />
-                  The evidence stays.
-                </h3>
-                <p>
-                  In Relay, approved work leaves reports, an internal case, and
-                  execution records. This fictional example finds a $20
-                  difference.
-                </p>
-                <span class="beat-detail"
-                  >The app also supports separate report and case review.</span
-                >
-              </section>
+              <div class="forest-byline">
+                <span>AYUSH PAUL</span><span>GRAPH HACKS 2026</span
+                ><span id="reading-time">8 min read</span>
+              </div>
             </div>
-
-            <div
-              class="journey-visual"
-              id="journey-visual"
-              data-stage="0"
-              data-approved="false"
-              aria-label="Interactive illustration of a Relay invoice review"
+            <span class="chapter-marginalia"
+              >ONE TREE. A CONNECTED WORLD. <i aria-hidden="true"></i> A BUILD
+              JOURNAL</span
             >
-              <div class="journey-window-bar">
-                <span class="journey-window-dots" aria-hidden="true"
-                  ><i></i><i></i><i></i></span
-                ><span>MERIDIAN / A CONNECTED WORKSPACE</span
-                ><span class="journey-window-badge">STORY PREVIEW</span>
-              </div>
-              <div class="journey-question">
-                <img src="/favicon.svg" alt="" width="24" height="24" />
-                <div>
-                  <span>THE REQUEST</span>
-                  <p>“Review this invoice against the order.”</p>
-                </div>
-              </div>
-              <div class="journey-canvas">
-                <svg
-                  class="scene-connections"
-                  viewBox="0 0 600 365"
-                  preserveAspectRatio="none"
-                  aria-hidden="true"
-                >
-                  <defs>
-                    <pattern
-                      id="story-dots"
-                      width="24"
-                      height="24"
-                      patternUnits="userSpaceOnUse"
-                    >
-                      <circle cx="1" cy="1" r="1" fill="#d4c7e9" />
-                    </pattern>
-                  </defs>
-                  <rect
-                    width="600"
-                    height="365"
-                    fill="url(#story-dots)"
-                    class="scene-dot-grid"
-                  />
-                  <g
-                    class="scene-paths"
-                    fill="none"
-                    stroke="#ab91d4"
-                    stroke-width="1.5"
+          </section>
+          <section
+            class="forest-chapter"
+            id="heart"
+            data-chapter="1"
+            aria-labelledby="heart-title"
+          >
+            <div class="chapter-copy">
+              <p class="forest-eyebrow">
+                <span>01</span> THE HEART / COORDINATION
+              </p>
+              <h2 id="heart-title">A heartbeat<br />for the <em>work.</em></h2>
+              <p>
+                LangGraph coordinates Relay’s stages. FalkorDB supplies the
+                relationships, permissions, and workflow state that keep them
+                grounded.
+              </p>
+              <p class="chapter-detail">
+                One connected path from a question to the evidence—and the
+                approved steps—needed to answer it.
+              </p>
+              <a class="forest-text-link" href="#workflow"
+                >The human checkpoint
+                <span aria-hidden="true"
+                  ><svg
+                    class="forest-arrow"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
                   >
-                    <path pathLength="1" d="M144 103C144 160 300 120 300 192" />
-                    <path pathLength="1" d="M456 103C456 160 300 120 300 192" />
-                    <path pathLength="1" d="M300 212C300 270 144 225 144 290" />
-                    <path pathLength="1" d="M300 212C300 270 456 225 456 290" />
-                  </g>
-                </svg>
-                <div class="scene-doc scene-invoice">
-                  <span class="scene-doc-icon" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24">
-                      <path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6" /></svg
-                  ></span>
-                  <div>
-                    <strong>Invoice</strong><span>Version 1 · Finance</span>
-                  </div>
-                  <span class="scene-version">v1</span>
-                </div>
-                <div class="scene-doc scene-order">
-                  <span class="scene-doc-icon" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24">
-                      <path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6" /></svg
-                  ></span>
-                  <div>
-                    <strong>Purchase order</strong
-                    ><span>Version 1 · Finance</span>
-                  </div>
-                  <span class="scene-version">v1</span>
-                </div>
-                <div class="scene-doc scene-context">
-                  <span class="scene-doc-icon" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24">
-                      <circle cx="12" cy="5" r="2" />
-                      <circle cx="5" cy="18" r="2" />
-                      <circle cx="19" cy="18" r="2" />
-                      <path d="M12 7v5M5 16v-4h14v4" /></svg
-                  ></span>
-                  <div>
-                    <strong>Company context</strong
-                    ><span class="context-stage-label"
-                      >People · projects · decisions</span
-                    >
-                  </div>
-                  <span class="scene-context-status" aria-hidden="true">✓</span>
-                </div>
-                <div class="scene-hub" aria-hidden="true">
-                  <span class="hub-ring"></span
-                  ><img src="/favicon.svg" width="60" height="60" alt="" />
-                </div>
-                <div class="scene-finance-state">
-                  <span class="mini-lock" aria-hidden="true"
-                    ><svg viewBox="0 0 24 24">
-                      <rect x="5" y="10" width="14" height="11" rx="2" />
-                      <path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg></span
-                  ><span
-                    >Finance processing<strong
-                      >Waiting for permission</strong
-                    ></span
-                  >
-                </div>
-                <div class="scene-fragments-label">
-                  Useful pieces.<br /><span>No shared path. Yet.</span>
-                </div>
-
-                <div class="scene-gate" id="scene-gate" hidden>
-                  <span class="gate-kicker"
-                    ><span class="mini-lock" aria-hidden="true"
-                      ><svg viewBox="0 0 24 24">
-                        <rect x="5" y="10" width="14" height="11" rx="2" />
-                        <path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg
-                    ></span>
-                    A HUMAN CHECKPOINT</span
-                  >
-                  <h3 id="gate-title">The next step<br />needs a human yes.</h3>
-                  <dl class="gate-scope">
-                    <div>
-                      <dt>Evidence</dt>
-                      <dd>Invoice v1 + order v1</dd>
-                    </div>
-                    <div>
-                      <dt>Scope</dt>
-                      <dd>Parse and compare rows</dd>
-                    </div>
-                    <div>
-                      <dt>Audience</dt>
-                      <dd>Approved reviewers</dd>
-                    </div>
-                  </dl>
-                  <button
-                    class="sample-approve"
-                    id="sample-approve"
-                    type="button"
-                  >
-                    Approve sample review <span aria-hidden="true">→</span>
-                  </button>
-                  <p class="gate-helper">
-                    Explore the illustration. This does not approve a live
-                    workflow.
-                  </p>
-                </div>
-                <div
-                  class="scene-approved-note"
-                  id="scene-approved-note"
-                  hidden
-                >
-                  <span class="approved-tick" aria-hidden="true"
-                    ><svg viewBox="0 0 30 30"><path d="m7 15 6 6L24 9" /></svg
-                  ></span>
-                  <h3>Sample review approved.</h3>
-                  <p>
-                    The permission covers these versions.<br />Continue to the
-                    example outcome.
-                  </p>
-                </div>
-                <div class="scene-receipt" id="scene-receipt" hidden>
-                  <div class="receipt-header">
-                    <span class="receipt-mark" aria-hidden="true">✓</span>
-                    <div>
-                      <span>EXAMPLE RECEIPT</span>
-                      <h3 id="receipt-title" tabindex="-1">
-                        A result you can trace.
-                      </h3>
-                    </div>
-                  </div>
-                  <div class="receipt-comparison">
-                    <div><span>Invoice</span><strong>$220</strong></div>
-                    <span class="comparison-divider" aria-hidden="true">−</span>
-                    <div><span>Order</span><strong>$200</strong></div>
-                    <span class="comparison-divider" aria-hidden="true">=</span>
-                    <div class="receipt-difference">
-                      <span>Difference</span><strong>$20</strong>
-                    </div>
-                  </div>
-                  <div class="receipt-outputs">
-                    <span>HTML report</span><span>CSV report</span
-                    ><span>Internal case</span>
-                  </div>
-                  <p>Exact versions → scoped approval → recorded outcome.</p>
-                  <button type="button" class="sample-reset" id="sample-reset">
-                    Reset this illustration <span aria-hidden="true">↺</span>
-                  </button>
-                </div>
-              </div>
-              <div class="journey-console">
-                <span class="console-led" aria-hidden="true"></span>
-                <p id="journey-console">
-                  The evidence exists. The work still needs a path.
-                </p>
-                <span id="journey-stage-count" aria-hidden="true">01 / 04</span>
-              </div>
-              <nav
-                class="journey-controls"
-                aria-label="Illustration scenes"
-                hidden
-              >
+                    <path d="M4 16 16 4M5 4h11v11" /></svg></span
+              ></a>
+            </div>
+          </section>
+          <section
+            class="forest-chapter"
+            id="branches"
+            data-chapter="2"
+            aria-labelledby="branches-title"
+          >
+            <div class="chapter-copy">
+              <p class="forest-eyebrow">
+                <span>02</span> THE BRANCHES / CAPABILITIES
+              </p>
+              <h2 id="branches-title">
+                Different paths.<br /><em>Shared context.</em>
+              </h2>
+              <p>
+                Four ways to turn connected company knowledge into useful work.
+                Select a branch to explore it.
+              </p>
+              <div class="branch-controls" aria-label="Relay functions" hidden>
                 <button
                   type="button"
-                  data-show-stage="0"
-                  aria-label="01 Gather: show scene"
+                  data-tree-branch="research"
                   aria-pressed="true"
                 >
-                  <span>01</span> Gather</button
-                ><button
-                  type="button"
-                  data-show-stage="1"
-                  aria-label="02 Connect: show scene"
-                  aria-pressed="false"
-                >
-                  <span>02</span> Connect</button
-                ><button
-                  type="button"
-                  data-show-stage="2"
-                  aria-label="03 Ask: show scene"
-                  aria-pressed="false"
-                >
-                  <span>03</span> Ask</button
-                ><button
-                  type="button"
-                  data-show-stage="3"
-                  aria-label="04 Act: show scene"
-                  aria-pressed="false"
-                >
-                  <span>04</span> Act
+                  <span aria-hidden="true"
+                    ><svg
+                      class="forest-arrow"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 16 16 4M5 4h11v11" /></svg
+                  ></span>
+                  Research
                 </button>
-              </nav>
-              <p class="journey-disclaimer">
-                Illustrative workflow · fictional data · runs only in this page
+                <button
+                  type="button"
+                  data-tree-branch="ripple"
+                  aria-pressed="false"
+                >
+                  <span aria-hidden="true">⌁</span> Ripple
+                </button>
+                <button
+                  type="button"
+                  data-tree-branch="finance"
+                  aria-pressed="false"
+                >
+                  <span aria-hidden="true">◇</span> Finance
+                </button>
+                <button
+                  type="button"
+                  data-tree-branch="memory"
+                  aria-pressed="false"
+                >
+                  <span aria-hidden="true">◎</span> Memory
+                </button>
+              </div>
+              <div
+                class="branch-description"
+                aria-live="polite"
+                aria-atomic="true"
+              >
+                <h3 id="branch-name">Research</h3>
+                <p id="branch-description">
+                  Answer company questions using permitted sources and
+                  references you can inspect.
+                </p>
+                <a id="branch-article-link" href="#story"
+                  >Read how it works
+                  <span aria-hidden="true"
+                    ><svg
+                      class="forest-arrow"
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 16 16 4M5 4h11v11" /></svg></span
+                ></a>
+              </div>
+              <noscript
+                ><p>
+                  Ripple follows dependency paths. Finance compares approved
+                  evidence. Memory preserves investigations and their sources.
+                  Read the full details in the article below.
+                </p></noscript
+              >
+            </div>
+          </section>
+          <section
+            class="forest-chapter"
+            id="roots"
+            data-chapter="3"
+            aria-labelledby="roots-title"
+          >
+            <div class="chapter-copy">
+              <p class="forest-eyebrow"><span>03</span> THE ROOTS / FALKORDB</p>
+              <h2 id="roots-title">What matters<br /><em>has roots.</em></h2>
+              <p>
+                People. Projects. Source versions. Approvals. Past
+                investigations. FalkorDB connects the evidence that decisions
+                depend on.
+              </p>
+              <p class="chapter-detail">
+                Cypher follows those relationships to find dependencies, check
+                permissions, and identify work affected by changed evidence.
+              </p>
+              <a class="forest-text-link" href="#graph"
+                >Follow a real graph query
+                <span aria-hidden="true"
+                  ><svg
+                    class="forest-arrow"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path d="M4 16 16 4M5 4h11v11" /></svg></span
+              ></a>
+            </div>
+          </section>
+          <section
+            class="forest-chapter"
+            id="action"
+            data-chapter="4"
+            aria-labelledby="action-title"
+          >
+            <div class="chapter-copy">
+              <p class="forest-eyebrow">
+                <span>04</span> IN ACTION / A HUMAN DECISION
+              </p>
+              <h2 id="action-title">
+                Room to act.<br />A reason to <em>wait.</em>
+              </h2>
+              <p>
+                Company research can continue while protected Finance work waits
+                for a separate auditor’s approval.
+              </p>
+              <div class="forest-approval" id="sample-gate">
+                <p class="sample-scope">
+                  Invoice v1 + order v1
+                  <span>Parse & compare · approved reviewers</span>
+                </p>
+                <button
+                  type="button"
+                  id="sample-approve"
+                  class="forest-primary"
+                  hidden
+                >
+                  Approve sample review <span aria-hidden="true">→</span>
+                </button>
+              </div>
+              <div class="forest-receipt" id="scene-receipt" hidden>
+                <p class="receipt-label">EXAMPLE RESULT</p>
+                <h3 id="receipt-title" tabindex="-1">A $20 difference.</h3>
+                <p>
+                  Sample invoice $220 − sample order $200.<br />Reports and an
+                  internal case leave a traceable record.
+                </p>
+                <button type="button" id="sample-reset">
+                  Reset illustration <span aria-hidden="true">↺</span>
+                </button>
+              </div>
+              <p class="illustration-note">
+                This sample stays in this page. It does not access Finance files
+                or execute a live workflow.
               </p>
               <p
                 class="sr-only"
@@ -635,29 +368,75 @@
                 aria-live="polite"
               ></p>
               <noscript
-                ><p class="journey-nojs">
-                  Follow the four written steps alongside this diagram. In the
-                  working app, Finance processing waits for scoped auditor
-                  approval; the full walkthrough below shows it.
+                ><p>
+                  In the example, an approved review finds a $20 difference. The
+                  working app requires scoped auditor approval before Finance
+                  processing.
                 </p></noscript
               >
             </div>
-          </div>
-          <div class="journey-outro">
-            <span aria-hidden="true">↓</span>
-            <p>
-              Invoice review is one example.<br /><strong
-                >The bigger idea is a company that remembers how things
-                connect.</strong
-              >
-            </p>
-            <a href="#story"
-              >Read the decisions behind the design
-              <span aria-hidden="true">↓</span></a
-            >
-          </div>
+          </section>
+          <section
+            class="forest-chapter ecosystem"
+            id="ecosystem"
+            data-chapter="5"
+            aria-labelledby="ecosystem-title"
+          >
+            <div class="chapter-copy">
+              <p class="forest-eyebrow">
+                <span>05</span> THE ECOSYSTEM / RELAY
+              </p>
+              <h2 id="ecosystem-title">
+                A company remembers.<br /><em>Work moves forward.</em>
+              </h2>
+              <p>
+                Evidence you can inspect. Work you can trace. History that
+                survives a correction. The value is in the connections.
+              </p>
+              <a
+                class="forest-primary"
+                href="https://www.youtube.com/watch?v=bvLC4aGHssA"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Watch Relay in action
+                <span aria-hidden="true"
+                  ><svg
+                    class="forest-arrow"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path d="M4 16 16 4M5 4h11v11" /></svg></span
+              ></a>
+              <div class="ecosystem-links">
+                <a href="#story">Read the field notes ↓</a
+                ><a
+                  href="https://github.com/AyushPaul26/wemakedevs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Explore the source
+                  <svg
+                    class="forest-arrow"
+                    viewBox="0 0 20 20"
+                    aria-hidden="true"
+                  >
+                    <path d="M4 16 16 4M5 4h11v11" /></svg
+                ></a>
+              </div>
+            </div>
+          </section>
         </div>
       </section>
+      <div class="field-notes-intro shell" aria-label="The build journal">
+        <svg class="field-leaf" viewBox="0 0 40 40" aria-hidden="true">
+          <path d="M10 32C10 10 24 9 32 6c2 17-3 26-22 26ZM10 32l15-17" />
+        </svg>
+        <p class="section-kicker">FROM THE ECOSYSTEM TO THE ENGINEERING</p>
+        <h2>The field notes.</h2>
+        <p>
+          The tree is a way to explore the architecture.<br />Here is what we
+          actually built, why the graph matters, and what the work taught us.
+        </p>
+      </div>
 
       <div class="article-layout shell">
         <aside class="article-aside">
@@ -1263,8 +1042,7 @@
               <span class="section-kicker">BUILT FOR GRAPH HACKS</span>
               <h3>Ayush Paul</h3>
               <p>
-                Relay · Company Brain, Agents That Act on Connected Data, and
-                Agent Memory and Coordination.
+                Relay · Company Brain · Connected knowledge, human oversight.
               </p>
               <a
                 href="https://github.com/AyushPaul26"

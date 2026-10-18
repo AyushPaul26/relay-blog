@@ -5,10 +5,14 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "node --check src/main.js && node --check src/story.js && node --check scripts/build.mjs",
+    "check": "node --check src/main.js && node --check src/forest.js && node --check src/tree-scene.js && node --check src/tree-geometry.js && node --check scripts/build.mjs",
     "preview": "python3 -m http.server 4174 --directory dist --bind 127.0.0.1"
   },
   "engines": {
     "node": ">=22"
+  },
+  "dependencies": {
+    "@fontsource/cormorant-garamond": "5.2.8",
+    "three": "0.180.0"
   }
 }

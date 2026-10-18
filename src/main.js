@@ -1,6 +1,6 @@
-import { initStoryExperience } from "./story.js";
+import { initForestExperience } from "./forest.js";
 
-initStoryExperience();
+initForestExperience();
 
 const scenarios = {
   baseline: {
@@ -72,7 +72,7 @@ copyButton.addEventListener("click", async () => {
 
 const words = [
   document.querySelector(".article-body"),
-  document.querySelector(".journey-notes"),
+  document.querySelector(".forest-chapters"),
 ]
   .map((element) => element.textContent)
   .join(" ")

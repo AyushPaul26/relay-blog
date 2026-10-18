@@ -1,12 +1,13 @@
 # Relay build journal
 
-A standalone, public article about Relay for Graph Hacks. This is a static site, independent of the authenticated Relay application on Render. No database, API credentials, environment variables, or npm dependencies are required for the site.
+A standalone, public article about Relay for Graph Hacks. This is a static site, independent of the authenticated Relay application on Render. No database, API credentials, or environment variables are required. Three.js adds depth and light to a continuous illustrated world; the artwork, fonts, and rendering modules are served locally.
 
 ## Build and preview
 
 From the repository root, with Node.js 22+:
 
 ```sh
+npm ci
 npm run check
 npm run build
 npm run preview
@@ -25,11 +26,15 @@ Open [Vercel's new project page](https://vercel.com/new), import `AyushPaul26/re
 ## Content and behavior
 
 - Static article remains readable without JavaScript.
-- A four-scene scroll story connects evidence, pauses at an auditor checkpoint, and shows a fictional receipt only after explicit sample approval. Scene buttons provide direct navigation; no live tools or workflows run.
-- Short entrance and section animations respect reduced-motion preferences, with an additional Reduce motion control on the page.
+- Six scroll chapters travel down one portrait world: from a luminous tree, past an architectural terrace, to a platform and glowing core. WebGL depth effects, particles, and a day-to-night grade accompany the journey. Scene buttons provide direct navigation.
+- `public/assets/living-world.webp` is AI-generated artwork based on the supplied visual reference. It is an illustrated environment with depth effects, not a fully modeled or freely rotatable 3D tree.
+- Research, Ripple, Finance, and Memory branches explain actual product functions. The tree is a visual metaphor, not a live activity monitor.
+- A fictional receipt appears only after explicit sample approval. No live tools or workflows run.
+- The same artwork and all written content remain available if WebGL fails. The article also remains readable without JavaScript.
+- The scene pauses offscreen. Scroll and ambient effects respect system motion preferences, with an additional Pause motion control on the page.
 - Dependency toggle is a labeled local illustration, not a live backend operation.
 - YouTube player loads only after the reader presses Play; an ordinary YouTube link remains available.
 - Core facts are grounded in the repository and verification documentation; limits and AI assistance are disclosed.
-- The included product screenshot contains fictional demo data. Fonts use their included SIL Open Font Licenses.
+- The included product screenshot contains fictional demo data. Fonts use their included SIL Open Font Licenses; Three.js uses the MIT license. Both license texts are included in the build.
 
 Visual intent, design tokens, and accessibility requirements are recorded in `DESIGN.md`.
