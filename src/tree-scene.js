@@ -1,5 +1,7 @@
 import * as THREE from "./vendor/three.module.min.js";
 import { createWaterfallEffects } from "./environment-effects.js";
+import { createCloudMask, cloudMotionShader } from "./cloud-motion.js";
+import { createEnergyEffects } from "./energy-effects.js";
 import {
   seededRandom,
   glowTexture,
@@ -25,15 +27,12 @@ const EMPTY_SCENE = {
 
 const artworkVertex = `
   varying vec2 vArtworkUv;
-  uniform vec2 uPointer;
-  uniform float uMotion;
   void main() {
     vArtworkUv = uv;
     vec3 point = position;
     // The surface relief is shallow; the artwork composition stays intact.
     float relief = sin(uv.x * 3.14159) * sin(uv.y * 3.14159);
     point.z += relief * 0.08;
-    point.x += uPointer.x * relief * 0.025 * uMotion;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(point, 1.0);
   }
 `;
@@ -42,12 +41,12 @@ const artworkFragment = `
   uniform sampler2D uArtwork;
   uniform float uProgress;
   uniform float uTime;
-  uniform float uMotion;
   uniform vec2 uSelected;
   varying vec2 vArtworkUv;
+  ${cloudMotionShader}
   void main() {
     vec2 uv = vArtworkUv;
-    vec4 source = texture2D(uArtwork, uv);
+    vec4 source = movingClouds(uv);
     vec3 color = source.rgb;
     float luminance = dot(color, vec3(0.2126, 0.7152, 0.0722));
     float twilight = smoothstep(0.27, 0.72, uProgress);
@@ -69,13 +68,11 @@ const artworkFragment = `
     amber *= clamp(awayFromSun, 0.0, 1.0);
     vec2 coreDistance = (uv - vec2(0.80, 0.135)) / vec2(0.07, 0.06);
     float core = exp(-dot(coreDistance, coreDistance) * 2.0);
-    float breath = 1.0 + sin(uTime * 1.25) * 0.13;
-    color = mix(color, source.rgb * breath, clamp((amber * 0.78 + core * 0.65) * twilight, 0.0, 0.94));
+    color = mix(color, source.rgb, clamp((amber * 0.78 + core * 0.65) * twilight, 0.0, 0.94));
     vec2 region = (uv - uSelected) / vec2(0.11, 0.085);
     float selection = exp(-dot(region, region) * 1.5);
     color += source.rgb * selection * amber * 0.075;
     color += vec3(0.013, 0.009, 0.002) * core * (0.5 + night * 0.5);
-    color += source.rgb * core * sin(uTime * 1.25) * 0.06;
     gl_FragColor = vec4(color, source.a);
     #include <colorspace_fragment>
   }
@@ -134,13 +131,13 @@ export async function createTreeScene({
   const mobile = window.innerWidth <= 760;
   const worldWidth = 20;
   const worldHeight = (worldWidth * artwork.image.height) / artwork.image.width;
+  const cloudMask = createCloudMask();
   const uniforms = {
     uArtwork: { value: artwork },
+    uCloudMask: { value: cloudMask },
     uProgress: { value: 0 },
     uTime: { value: 0 },
-    uMotion: { value: 1 },
     uSelected: { value: BRANCHES.research.clone() },
-    uPointer: { value: new THREE.Vector2() },
   };
   const artworkMaterial = new THREE.ShaderMaterial({
     uniforms,
@@ -154,38 +151,9 @@ export async function createTreeScene({
   );
   scene.add(world);
 
-  // These cloud layers occupy separate depths; the connected world never changes images.
+  // Actual cloud details move in the artwork shader. The mist texture is only
+  // used for the spray at waterfall bases, never as a substitute for clouds.
   const cloudTexture = mistTexture(random);
-  const clouds = [];
-  const cloudPositions = [
-    [-6.5, 9, 0.8, 13, 2.3],
-    [5.8, 6.4, 1.1, 9, 1.8],
-    [-7, 2.0, 1.8, 13, 2.5],
-    [7.7, -2.8, 0.9, 9, 2.1],
-    [-5.8, -7.3, 1.4, 12, 2.8],
-    [2.2, -13.4, 2.0, 13, 2.5],
-  ];
-  cloudPositions.forEach(([x, y, z, width, height], index) => {
-    const material = new THREE.MeshBasicMaterial({
-      map: cloudTexture,
-      color: 0xfff3d8,
-      transparent: true,
-      opacity: 0.26,
-      depthWrite: false,
-      toneMapped: false,
-    });
-    const cloud = new THREE.Mesh(
-      new THREE.PlaneGeometry(width, height),
-      material,
-    );
-    cloud.position.set(x, y, z);
-    cloud.userData.baseX = x;
-    cloud.userData.baseY = y;
-    cloud.userData.phase = index * 1.8;
-    cloud.userData.speed = 0.12 + (index % 3) * 0.035;
-    clouds.push(cloud);
-    scene.add(cloud);
-  });
   const waterfalls = createWaterfallEffects({
     scene,
     worldWidth,
@@ -193,6 +161,13 @@ export async function createTreeScene({
     random,
     mobile,
     cloudTexture,
+  });
+  const energy = createEnergyEffects({
+    scene,
+    worldWidth,
+    worldHeight,
+    random,
+    mobile,
   });
   const pointTexture = glowTexture();
   const flyCount = mobile ? 30 : 56;
@@ -267,8 +242,6 @@ export async function createTreeScene({
   let hoverTime = 0;
   const pointer = new THREE.Vector2();
   const raycaster = new THREE.Raycaster();
-  const dayMist = new THREE.Color(0xfff3d8);
-  const nightMist = new THREE.Color(0x718eab);
 
   function positionCamera() {
     const aspect = width / height;
@@ -290,42 +263,23 @@ export async function createTreeScene({
     const x = clamp((focus - 0.5) * worldWidth, -maxX, maxX);
     const z =
       safeHeight / (2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)));
-    const driftX = reducedMotion ? 0 : uniforms.uPointer.value.x * 0.018;
-    const cameraX = clamp(x + driftX, -maxX, maxX);
+    const cameraX = x;
     camera.position.set(cameraX, y, z);
     camera.lookAt(cameraX, y, 0);
   }
 
   function draw(now = performance.now()) {
     if (disposed || failed || !visible || document.hidden) return;
-    const delta = Math.min((now - lastFrame) / 1000 || 0, 0.08);
+    const delta = Math.min((now - lastFrame) / 1000 || 0, 0.25);
     lastFrame = now;
     if (!reducedMotion) elapsed += delta;
     uniforms.uTime.value = elapsed;
     uniforms.uProgress.value = progress;
-    uniforms.uMotion.value = reducedMotion ? 0 : 1;
     uniforms.uSelected.value.copy(BRANCHES[hovered || selected]);
     positionCamera();
     const night = smooth(clamp((progress - 0.4) / 0.6, 0, 1));
-    clouds.forEach((cloud) => {
-      cloud.position.x =
-        cloud.userData.baseX +
-        Math.sin(elapsed * cloud.userData.speed + cloud.userData.phase) * 1.65;
-      cloud.position.y =
-        cloud.userData.baseY +
-        Math.sin(elapsed * 0.11 + cloud.userData.phase) * 0.13;
-      cloud.scale.set(
-        1 + Math.sin(elapsed * 0.09 + cloud.userData.phase) * 0.045,
-        1 + Math.cos(elapsed * 0.14 + cloud.userData.phase) * 0.1,
-        1,
-      );
-      cloud.material.color.copy(dayMist).lerp(nightMist, night);
-      cloud.material.opacity =
-        0.43 -
-        night * 0.07 +
-        Math.sin(elapsed * 0.26 + cloud.userData.phase) * 0.055;
-    });
     waterfalls.update(elapsed, night);
+    energy.update(elapsed, night);
     flyMaterial.opacity = 0.32 + night * 0.34;
     starMaterial.opacity = night * 0.32;
     if (!reducedMotion) {
@@ -395,12 +349,6 @@ export async function createTreeScene({
   }
   function move(event) {
     if (!visible || event.pointerType === "touch") return;
-    const bounds = renderer.domElement.getBoundingClientRect();
-    if (!reducedMotion)
-      uniforms.uPointer.value.set(
-        (event.clientX - bounds.left) / bounds.width - 0.5,
-        (event.clientY - bounds.top) / bounds.height - 0.5,
-      );
     if (performance.now() - hoverTime < 120) return;
     hoverTime = performance.now();
     const next = hitBranch(event);
@@ -412,7 +360,6 @@ export async function createTreeScene({
   }
   function leave() {
     hovered = null;
-    uniforms.uPointer.value.set(0, 0);
     renderer.domElement.style.cursor = "";
     requestDraw();
   }
@@ -456,7 +403,6 @@ export async function createTreeScene({
       reducedMotion = Boolean(value);
       cancelAnimationFrame(frame);
       frame = 0;
-      uniforms.uPointer.value.set(0, 0);
       lastFrame = performance.now();
       requestDraw();
     },
@@ -480,9 +426,11 @@ export async function createTreeScene({
       document.removeEventListener("visibilitychange", visibilityChange);
       disposeScene(scene);
       artwork.dispose();
+      cloudMask.dispose();
       cloudTexture.dispose();
       pointTexture.dispose();
       waterfalls.dispose();
+      energy.dispose();
       renderer.dispose();
       renderer.domElement.remove();
     },

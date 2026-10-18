@@ -18,7 +18,9 @@ Compose each crop around the portrait artwork's landmarks, leaving readable spac
 
 ## Motion and interaction
 
-Scroll updates the artwork framing, day-to-night color grade, and selected chapter. The world also animates while the reader is still: cloud banks drift at different depths, water flows down the painted falls, mist rises at their bases, and the amber core breathes. Motion must be apparent within a few seconds at ordinary screen size without making the typography move or obscuring the tree. Function buttons select an explanation without automatically running work.
+Scroll updates the artwork framing, day-to-night color grade, and selected chapter. The world also animates while the reader is still: the actual painted sky and valley cloud details drift, water flows down the falls, and mist rises at their bases. A mapped cloud mask in `src/cloud-motion.js` protects mountain, island, tree, and branch silhouettes; do not substitute a faint moving fog overlay for moving cloud shapes. Two overlapping flow phases prevent a visible animation reset. The mountains and tree structure stay fixed at a given scroll position, including on pointer movement.
+
+`src/energy-effects.js` animates rotating amber filaments inside the root core, rising flames and embers at the painted lamps, and cyan scanning light on both blue screens. Keep effects aligned with their artwork landmarks. Motion must be apparent within a few seconds at ordinary screen size without making the typography move or obscuring the tree. Function buttons select an explanation without automatically running work.
 
 The frame loop stops offscreen and when the document is hidden. Pause motion freezes the environment. The operating-system reduced-motion preference starts it paused, with an enabled Play motion control for explicit opt-in. A subsequent system-preference change restores the system default. Scene and function controls remain usable in either mode.
 
@@ -39,3 +41,5 @@ Ground technical facts in the application README, graph and workflow implementat
 Standalone `AyushPaul26/relay-blog`, branch main, deployed separately on Vercel. `npm ci` installs pinned Three.js and Cormorant font packages. The Node build copies static modules, two minified Three.js modules, licensed fonts, and local assets to dist; no backend or credentials are needed. Keep third-party licenses in the output.
 
 Verify syntax/build, scene and branch controls, approval/reset, existing Ripple/video/copy, keyboard behavior, all local references, no-JS reading, reduced motion, unavailable WebGL/context loss, desktop/mobile/short-window layouts, security headers, and automated accessibility. Inspect real browser screenshots before pushing. Do not claim a live Vercel deployment until observed.
+
+For weather changes, verify cloud-shape displacement at fixed scroll separately from light or opacity changes. Compare sky, upper-valley, middle-valley, and lower-valley regions; fixed mountain and trunk regions must retain their shape. Review short motion captures as well as still frames. All scene effects share the same elapsed clock so Pause freezes clouds, water, core, lamps, screens, and particles together.

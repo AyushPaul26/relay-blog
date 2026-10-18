@@ -31,7 +31,7 @@ Open [Vercel's new project page](https://vercel.com/new), import `AyushPaul26/re
 - Research, Ripple, Finance, and Memory branches explain actual product functions. The tree is a visual metaphor, not a live activity monitor.
 - A fictional receipt appears only after explicit sample approval. No live tools or workflows run.
 - The same artwork and all written content remain available if WebGL fails. The article also remains readable without JavaScript.
-- Clouds drift, waterfall streams flow, and the core pulses while the reader is still. These effects are illustrative, not live application activity.
+- Painted sky and valley clouds drift through masked texture animation while mountains and tree silhouettes stay fixed. Waterfalls flow, amber filaments rotate inside the root core, lamps flicker with rising embers, and the blue screens shimmer. These effects animate at rest and are illustrative, not live application activity.
 - The scene pauses offscreen or in a hidden tab. System reduced motion starts it paused; Play motion allows explicit opt-in, and Pause motion freezes the environment again.
 - Dependency toggle is a labeled local illustration, not a live backend operation.
 - YouTube player loads only after the reader presses Play; an ordinary YouTube link remains available.

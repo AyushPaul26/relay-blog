@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "node --check src/main.js && node --check src/forest.js && node --check src/tree-scene.js && node --check src/tree-geometry.js && node --check src/environment-effects.js && node --check scripts/build.mjs",
+    "check": "node --check src/main.js && node --check src/forest.js && node --check src/tree-scene.js && node --check src/tree-geometry.js && node --check src/environment-effects.js && node --check src/cloud-motion.js && node --check src/energy-effects.js && node --check scripts/build.mjs",
     "preview": "python3 -m http.server 4174 --directory dist --bind 127.0.0.1"
   },
   "engines": {
