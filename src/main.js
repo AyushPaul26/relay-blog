@@ -1,3 +1,7 @@
+import { initStoryExperience } from "./story.js";
+
+initStoryExperience();
+
 const scenarios = {
   baseline: {
     count: "3",
@@ -66,9 +70,13 @@ copyButton.addEventListener("click", async () => {
   }
 });
 
-const words = document
-  .querySelector(".article-body")
-  .textContent.trim()
+const words = [
+  document.querySelector(".article-body"),
+  document.querySelector(".journey-notes"),
+]
+  .map((element) => element.textContent)
+  .join(" ")
+  .trim()
   .split(/\s+/).length;
 document.querySelector("#reading-time").textContent =
   `${Math.max(1, Math.ceil(words / 220))} min read`;

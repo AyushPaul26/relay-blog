@@ -37,6 +37,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="/assets/styles.css" />
+    <link rel="stylesheet" href="/assets/story.css" />
     <script type="module" src="/assets/main.js"></script>
   </head>
   <body>
@@ -52,7 +53,7 @@
         ><span class="brand-note">THE BUILD JOURNAL</span></a
       >
       <nav class="header-nav" aria-label="Main navigation">
-        <a href="#story">The story</a><a href="#graph">Inside the graph</a
+        <a href="#journey">The story</a><a href="#graph">Inside the graph</a
         ><a href="#lessons">Lessons</a>
       </nav>
       <a
@@ -88,8 +89,8 @@
             what should happen next.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#story"
-              >Read the build story <span aria-hidden="true">↓</span></a
+            <a class="button button-primary" href="#journey"
+              >Step inside the story <span aria-hidden="true">↓</span></a
             ><a
               class="text-link"
               href="https://github.com/AyushPaul26/wemakedevs"
@@ -281,6 +282,382 @@
           >
         </div>
       </div>
+
+      <section class="journey" id="journey" aria-labelledby="journey-title">
+        <div class="shell">
+          <div class="journey-heading">
+            <div>
+              <p class="section-kicker">A QUESTION BECOMES A WORKFLOW</p>
+              <h2 id="journey-title">
+                Keep scrolling.<br /><span>Watch the dots connect.</span>
+              </h2>
+              <p>
+                Follow one piece of work from scattered evidence to a decision
+                you can trace.
+              </p>
+            </div>
+            <button
+              class="motion-toggle"
+              id="motion-toggle"
+              type="button"
+              aria-pressed="false"
+              hidden
+            >
+              <span class="motion-icon" aria-hidden="true"></span
+              ><span id="motion-label">Reduce motion</span>
+            </button>
+          </div>
+
+          <div class="journey-layout">
+            <div class="journey-notes">
+              <section
+                class="journey-beat"
+                id="scene-evidence"
+                data-beat="0"
+                aria-labelledby="beat-evidence-title"
+              >
+                <span class="beat-index">01 <span>GATHER</span></span>
+                <h3 id="beat-evidence-title">
+                  The facts exist.<br />
+                  The connections<br />
+                  are missing.
+                </h3>
+                <p>
+                  A project has context. Finance has documents. Someone still
+                  has to connect the work.
+                </p>
+                <span class="beat-detail"
+                  >One company. Different pieces of the answer.</span
+                >
+              </section>
+              <section
+                class="journey-beat"
+                id="scene-connections"
+                data-beat="1"
+                aria-labelledby="beat-connections-title"
+              >
+                <span class="beat-index">02 <span>CONNECT</span></span>
+                <h3 id="beat-connections-title">
+                  Give the company<br />
+                  a shared memory.
+                </h3>
+                <p>
+                  Relay connects owners, dependencies, and evidence. Company
+                  research can continue while protected Finance processing
+                  waits.
+                </p>
+                <span class="beat-detail"
+                  >Relationships become a path through the work.</span
+                >
+              </section>
+              <section
+                class="journey-beat"
+                id="scene-permission"
+                data-beat="2"
+                aria-labelledby="beat-permission-title"
+              >
+                <span class="beat-index">03 <span>ASK</span></span>
+                <h3 id="beat-permission-title">
+                  One decision<br />
+                  belongs to a human.
+                </h3>
+                <p>
+                  The auditor reviews the exact document versions, permitted
+                  tools, and output audience before Finance processing proceeds.
+                </p>
+                <span class="beat-detail"
+                  >Try the sample approval in the illustration.</span
+                >
+              </section>
+              <section
+                class="journey-beat"
+                id="scene-outcome"
+                data-beat="3"
+                aria-labelledby="beat-receipt-title"
+              >
+                <span class="beat-index"
+                  >04 <span>ACT &amp; REMEMBER</span></span
+                >
+                <h3 id="beat-receipt-title">
+                  The work moves.<br />
+                  The evidence stays.
+                </h3>
+                <p>
+                  In Relay, approved work leaves reports, an internal case, and
+                  execution records. This fictional example finds a $20
+                  difference.
+                </p>
+                <span class="beat-detail"
+                  >The app also supports separate report and case review.</span
+                >
+              </section>
+            </div>
+
+            <div
+              class="journey-visual"
+              id="journey-visual"
+              data-stage="0"
+              data-approved="false"
+              aria-label="Interactive illustration of a Relay invoice review"
+            >
+              <div class="journey-window-bar">
+                <span class="journey-window-dots" aria-hidden="true"
+                  ><i></i><i></i><i></i></span
+                ><span>MERIDIAN / A CONNECTED WORKSPACE</span
+                ><span class="journey-window-badge">STORY PREVIEW</span>
+              </div>
+              <div class="journey-question">
+                <img src="/favicon.svg" alt="" width="24" height="24" />
+                <div>
+                  <span>THE REQUEST</span>
+                  <p>“Review this invoice against the order.”</p>
+                </div>
+              </div>
+              <div class="journey-canvas">
+                <svg
+                  class="scene-connections"
+                  viewBox="0 0 600 365"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <pattern
+                      id="story-dots"
+                      width="24"
+                      height="24"
+                      patternUnits="userSpaceOnUse"
+                    >
+                      <circle cx="1" cy="1" r="1" fill="#d4c7e9" />
+                    </pattern>
+                  </defs>
+                  <rect
+                    width="600"
+                    height="365"
+                    fill="url(#story-dots)"
+                    class="scene-dot-grid"
+                  />
+                  <g
+                    class="scene-paths"
+                    fill="none"
+                    stroke="#ab91d4"
+                    stroke-width="1.5"
+                  >
+                    <path pathLength="1" d="M144 103C144 160 300 120 300 192" />
+                    <path pathLength="1" d="M456 103C456 160 300 120 300 192" />
+                    <path pathLength="1" d="M300 212C300 270 144 225 144 290" />
+                    <path pathLength="1" d="M300 212C300 270 456 225 456 290" />
+                  </g>
+                </svg>
+                <div class="scene-doc scene-invoice">
+                  <span class="scene-doc-icon" aria-hidden="true"
+                    ><svg viewBox="0 0 24 24">
+                      <path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6" /></svg
+                  ></span>
+                  <div>
+                    <strong>Invoice</strong><span>Version 1 · Finance</span>
+                  </div>
+                  <span class="scene-version">v1</span>
+                </div>
+                <div class="scene-doc scene-order">
+                  <span class="scene-doc-icon" aria-hidden="true"
+                    ><svg viewBox="0 0 24 24">
+                      <path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6" /></svg
+                  ></span>
+                  <div>
+                    <strong>Purchase order</strong
+                    ><span>Version 1 · Finance</span>
+                  </div>
+                  <span class="scene-version">v1</span>
+                </div>
+                <div class="scene-doc scene-context">
+                  <span class="scene-doc-icon" aria-hidden="true"
+                    ><svg viewBox="0 0 24 24">
+                      <circle cx="12" cy="5" r="2" />
+                      <circle cx="5" cy="18" r="2" />
+                      <circle cx="19" cy="18" r="2" />
+                      <path d="M12 7v5M5 16v-4h14v4" /></svg
+                  ></span>
+                  <div>
+                    <strong>Company context</strong
+                    ><span class="context-stage-label"
+                      >People · projects · decisions</span
+                    >
+                  </div>
+                  <span class="scene-context-status" aria-hidden="true">✓</span>
+                </div>
+                <div class="scene-hub" aria-hidden="true">
+                  <span class="hub-ring"></span
+                  ><img src="/favicon.svg" width="60" height="60" alt="" />
+                </div>
+                <div class="scene-finance-state">
+                  <span class="mini-lock" aria-hidden="true"
+                    ><svg viewBox="0 0 24 24">
+                      <rect x="5" y="10" width="14" height="11" rx="2" />
+                      <path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg></span
+                  ><span
+                    >Finance processing<strong
+                      >Waiting for permission</strong
+                    ></span
+                  >
+                </div>
+                <div class="scene-fragments-label">
+                  Useful pieces.<br /><span>No shared path. Yet.</span>
+                </div>
+
+                <div class="scene-gate" id="scene-gate" hidden>
+                  <span class="gate-kicker"
+                    ><span class="mini-lock" aria-hidden="true"
+                      ><svg viewBox="0 0 24 24">
+                        <rect x="5" y="10" width="14" height="11" rx="2" />
+                        <path d="M8 10V7a4 4 0 0 1 8 0v3" /></svg
+                    ></span>
+                    A HUMAN CHECKPOINT</span
+                  >
+                  <h3 id="gate-title">The next step<br />needs a human yes.</h3>
+                  <dl class="gate-scope">
+                    <div>
+                      <dt>Evidence</dt>
+                      <dd>Invoice v1 + order v1</dd>
+                    </div>
+                    <div>
+                      <dt>Scope</dt>
+                      <dd>Parse and compare rows</dd>
+                    </div>
+                    <div>
+                      <dt>Audience</dt>
+                      <dd>Approved reviewers</dd>
+                    </div>
+                  </dl>
+                  <button
+                    class="sample-approve"
+                    id="sample-approve"
+                    type="button"
+                  >
+                    Approve sample review <span aria-hidden="true">→</span>
+                  </button>
+                  <p class="gate-helper">
+                    Explore the illustration. This does not approve a live
+                    workflow.
+                  </p>
+                </div>
+                <div
+                  class="scene-approved-note"
+                  id="scene-approved-note"
+                  hidden
+                >
+                  <span class="approved-tick" aria-hidden="true"
+                    ><svg viewBox="0 0 30 30"><path d="m7 15 6 6L24 9" /></svg
+                  ></span>
+                  <h3>Sample review approved.</h3>
+                  <p>
+                    The permission covers these versions.<br />Continue to the
+                    example outcome.
+                  </p>
+                </div>
+                <div class="scene-receipt" id="scene-receipt" hidden>
+                  <div class="receipt-header">
+                    <span class="receipt-mark" aria-hidden="true">✓</span>
+                    <div>
+                      <span>EXAMPLE RECEIPT</span>
+                      <h3 id="receipt-title" tabindex="-1">
+                        A result you can trace.
+                      </h3>
+                    </div>
+                  </div>
+                  <div class="receipt-comparison">
+                    <div><span>Invoice</span><strong>$220</strong></div>
+                    <span class="comparison-divider" aria-hidden="true">−</span>
+                    <div><span>Order</span><strong>$200</strong></div>
+                    <span class="comparison-divider" aria-hidden="true">=</span>
+                    <div class="receipt-difference">
+                      <span>Difference</span><strong>$20</strong>
+                    </div>
+                  </div>
+                  <div class="receipt-outputs">
+                    <span>HTML report</span><span>CSV report</span
+                    ><span>Internal case</span>
+                  </div>
+                  <p>Exact versions → scoped approval → recorded outcome.</p>
+                  <button type="button" class="sample-reset" id="sample-reset">
+                    Reset this illustration <span aria-hidden="true">↺</span>
+                  </button>
+                </div>
+              </div>
+              <div class="journey-console">
+                <span class="console-led" aria-hidden="true"></span>
+                <p id="journey-console">
+                  The evidence exists. The work still needs a path.
+                </p>
+                <span id="journey-stage-count" aria-hidden="true">01 / 04</span>
+              </div>
+              <nav
+                class="journey-controls"
+                aria-label="Illustration scenes"
+                hidden
+              >
+                <button
+                  type="button"
+                  data-show-stage="0"
+                  aria-label="01 Gather: show scene"
+                  aria-pressed="true"
+                >
+                  <span>01</span> Gather</button
+                ><button
+                  type="button"
+                  data-show-stage="1"
+                  aria-label="02 Connect: show scene"
+                  aria-pressed="false"
+                >
+                  <span>02</span> Connect</button
+                ><button
+                  type="button"
+                  data-show-stage="2"
+                  aria-label="03 Ask: show scene"
+                  aria-pressed="false"
+                >
+                  <span>03</span> Ask</button
+                ><button
+                  type="button"
+                  data-show-stage="3"
+                  aria-label="04 Act: show scene"
+                  aria-pressed="false"
+                >
+                  <span>04</span> Act
+                </button>
+              </nav>
+              <p class="journey-disclaimer">
+                Illustrative workflow · fictional data · runs only in this page
+              </p>
+              <p
+                class="sr-only"
+                id="sample-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+              <noscript
+                ><p class="journey-nojs">
+                  Follow the four written steps alongside this diagram. In the
+                  working app, Finance processing waits for scoped auditor
+                  approval; the full walkthrough below shows it.
+                </p></noscript
+              >
+            </div>
+          </div>
+          <div class="journey-outro">
+            <span aria-hidden="true">↓</span>
+            <p>
+              Invoice review is one example.<br /><strong
+                >The bigger idea is a company that remembers how things
+                connect.</strong
+              >
+            </p>
+            <a href="#story"
+              >Read the decisions behind the design
+              <span aria-hidden="true">↓</span></a
+            >
+          </div>
+        </div>
+      </section>
 
       <div class="article-layout shell">
         <aside class="article-aside">

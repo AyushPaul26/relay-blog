@@ -25,6 +25,8 @@ Open [Vercel's new project page](https://vercel.com/new), import `AyushPaul26/re
 ## Content and behavior
 
 - Static article remains readable without JavaScript.
+- A four-scene scroll story connects evidence, pauses at an auditor checkpoint, and shows a fictional receipt only after explicit sample approval. Scene buttons provide direct navigation; no live tools or workflows run.
+- Short entrance and section animations respect reduced-motion preferences, with an additional Reduce motion control on the page.
 - Dependency toggle is a labeled local illustration, not a live backend operation.
 - YouTube player loads only after the reader presses Play; an ordinary YouTube link remains available.
 - Core facts are grounded in the repository and verification documentation; limits and AI assistance are disclosed.

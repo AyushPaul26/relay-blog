@@ -12,6 +12,8 @@ await cp(
   path.join(out, "assets/styles.css"),
 );
 await cp(path.join(root, "src/main.js"), path.join(out, "assets/main.js"));
+await cp(path.join(root, "src/story.js"), path.join(out, "assets/story.js"));
+await cp(path.join(root, "src/story.css"), path.join(out, "assets/story.css"));
 let html = await readFile(path.join(root, "index.html"), "utf8");
 const productionDomain = process.env.VERCEL_PROJECT_PRODUCTION_URL;
 if (productionDomain && /^[a-z0-9.-]+$/i.test(productionDomain)) {
