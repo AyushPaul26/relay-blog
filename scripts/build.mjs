@@ -17,6 +17,7 @@ for (const name of [
   "forest.css",
   "tree-scene.js",
   "tree-geometry.js",
+  "environment-effects.js",
 ]) {
   await cp(path.join(root, "src", name), path.join(out, "assets", name));
 }

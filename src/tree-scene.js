@@ -1,4 +1,5 @@
 import * as THREE from "./vendor/three.module.min.js";
+import { createWaterfallEffects } from "./environment-effects.js";
 import {
   seededRandom,
   glowTexture,
@@ -68,12 +69,13 @@ const artworkFragment = `
     amber *= clamp(awayFromSun, 0.0, 1.0);
     vec2 coreDistance = (uv - vec2(0.80, 0.135)) / vec2(0.07, 0.06);
     float core = exp(-dot(coreDistance, coreDistance) * 2.0);
-    float breath = 0.96 + sin(uTime * 1.1) * 0.04 * uMotion;
+    float breath = 1.0 + sin(uTime * 1.25) * 0.13;
     color = mix(color, source.rgb * breath, clamp((amber * 0.78 + core * 0.65) * twilight, 0.0, 0.94));
     vec2 region = (uv - uSelected) / vec2(0.11, 0.085);
     float selection = exp(-dot(region, region) * 1.5);
     color += source.rgb * selection * amber * 0.075;
     color += vec3(0.013, 0.009, 0.002) * core * (0.5 + night * 0.5);
+    color += source.rgb * core * sin(uTime * 1.25) * 0.06;
     gl_FragColor = vec4(color, source.a);
     #include <colorspace_fragment>
   }
@@ -178,9 +180,19 @@ export async function createTreeScene({
     );
     cloud.position.set(x, y, z);
     cloud.userData.baseX = x;
+    cloud.userData.baseY = y;
     cloud.userData.phase = index * 1.8;
+    cloud.userData.speed = 0.12 + (index % 3) * 0.035;
     clouds.push(cloud);
     scene.add(cloud);
+  });
+  const waterfalls = createWaterfallEffects({
+    scene,
+    worldWidth,
+    worldHeight,
+    random,
+    mobile,
+    cloudTexture,
   });
   const pointTexture = glowTexture();
   const flyCount = mobile ? 30 : 56;
@@ -204,7 +216,7 @@ export async function createTreeScene({
   const flyMaterial = new THREE.PointsMaterial({
     map: pointTexture,
     color: 0xffcb71,
-    size: 0.045,
+    size: 0.06,
     transparent: true,
     opacity: 0.42,
     depthWrite: false,
@@ -298,20 +310,30 @@ export async function createTreeScene({
     clouds.forEach((cloud) => {
       cloud.position.x =
         cloud.userData.baseX +
-        (reducedMotion
-          ? 0
-          : Math.sin(elapsed * 0.035 + cloud.userData.phase) * 0.2);
+        Math.sin(elapsed * cloud.userData.speed + cloud.userData.phase) * 1.65;
+      cloud.position.y =
+        cloud.userData.baseY +
+        Math.sin(elapsed * 0.11 + cloud.userData.phase) * 0.13;
+      cloud.scale.set(
+        1 + Math.sin(elapsed * 0.09 + cloud.userData.phase) * 0.045,
+        1 + Math.cos(elapsed * 0.14 + cloud.userData.phase) * 0.1,
+        1,
+      );
       cloud.material.color.copy(dayMist).lerp(nightMist, night);
-      cloud.material.opacity = 0.24 - night * 0.06;
+      cloud.material.opacity =
+        0.43 -
+        night * 0.07 +
+        Math.sin(elapsed * 0.26 + cloud.userData.phase) * 0.055;
     });
+    waterfalls.update(elapsed, night);
     flyMaterial.opacity = 0.32 + night * 0.34;
     starMaterial.opacity = night * 0.32;
     if (!reducedMotion) {
       flyOrigins.forEach((point, index) => {
         flyPositions[index * 3] =
-          point[0] + Math.sin(elapsed * 0.19 + index * 1.7) * 0.13;
+          point[0] + Math.sin(elapsed * 0.43 + index * 1.7) * 0.25;
         flyPositions[index * 3 + 1] =
-          point[1] + Math.cos(elapsed * 0.14 + index) * 0.17;
+          point[1] + Math.cos(elapsed * 0.31 + index) * 0.29;
       });
       flyGeometry.attributes.position.needsUpdate = true;
     }
@@ -460,6 +482,7 @@ export async function createTreeScene({
       artwork.dispose();
       cloudTexture.dispose();
       pointTexture.dispose();
+      waterfalls.dispose();
       renderer.dispose();
       renderer.domElement.remove();
     },

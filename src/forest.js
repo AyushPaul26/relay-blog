@@ -35,7 +35,8 @@ export function initForestExperience() {
   const motionButton = document.querySelector("#motion-toggle");
   const mediaMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const status = document.querySelector("#tree-load-status");
-  let paused = false;
+  // Follow the device preference initially; an explicit click can opt into motion.
+  let paused = null;
   let reduced = mediaMotion.matches;
   let scene = null;
   let activeScene = -1;
@@ -52,22 +53,24 @@ export function initForestExperience() {
   motionButton.hidden = false;
 
   function setMotion() {
-    reduced = paused || mediaMotion.matches;
+    reduced = paused === null ? mediaMotion.matches : paused;
     root.classList.toggle("motion-reduced", reduced);
     motionButton.setAttribute("aria-pressed", String(reduced));
-    motionButton.disabled = mediaMotion.matches;
-    document.querySelector("#motion-label").textContent = mediaMotion.matches
-      ? "Reduced motion"
-      : paused
-        ? "Resume motion"
-        : "Pause motion";
+    document.querySelector("#motion-label").textContent = reduced
+      ? paused === null
+        ? "Play motion"
+        : "Resume motion"
+      : "Pause motion";
     scene?.setReducedMotion(reduced);
   }
   motionButton.addEventListener("click", () => {
-    paused = !paused;
+    paused = !reduced;
     setMotion();
   });
-  mediaMotion.addEventListener("change", setMotion);
+  mediaMotion.addEventListener("change", () => {
+    paused = null;
+    setMotion();
+  });
   setMotion();
 
   function goToScene(index) {
@@ -181,6 +184,7 @@ export function initForestExperience() {
   function fallback() {
     container.classList.remove("tree-ready");
     container.classList.add("tree-unavailable");
+    motionButton.hidden = true;
     status.textContent = "Still illustration · explore every chapter below";
   }
   async function loadScene() {
@@ -193,6 +197,7 @@ export function initForestExperience() {
         container,
         onReady() {
           container.classList.add("tree-ready");
+          motionButton.hidden = false;
           status.textContent =
             "A visual metaphor. Explore Relay’s real functions.";
         },

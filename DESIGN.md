@@ -18,7 +18,9 @@ Compose each crop around the portrait artwork's landmarks, leaving readable spac
 
 ## Motion and interaction
 
-Scroll updates the artwork framing, day-to-night color grade, and selected chapter. Function buttons select an explanation without automatically running work. WebGL depth effects, light, and particles should support the illustration without obscuring it. The frame loop stops offscreen and when the document is hidden. Pause motion and the operating-system reduced-motion preference stop continuous animation, while explicit scene and function changes remain usable.
+Scroll updates the artwork framing, day-to-night color grade, and selected chapter. The world also animates while the reader is still: cloud banks drift at different depths, water flows down the painted falls, mist rises at their bases, and the amber core breathes. Motion must be apparent within a few seconds at ordinary screen size without making the typography move or obscuring the tree. Function buttons select an explanation without automatically running work.
+
+The frame loop stops offscreen and when the document is hidden. Pause motion freezes the environment. The operating-system reduced-motion preference starts it paused, with an enabled Play motion control for explicit opt-in. A subsequent system-preference change restores the system default. Scene and function controls remain usable in either mode.
 
 The Finance example requires an explicit sample approval click before showing its receipt. Scrolling cannot grant approval. It is clearly fictional, local, and disconnected from live APIs. Reset restores the waiting state. Keep exact-version/tool/audience scope in the explanation and separate report/case review in the article.
 

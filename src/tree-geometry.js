@@ -31,12 +31,45 @@ export function mistTexture(random) {
     const y = 42 + random() * 44;
     const radius = 22 + random() * 35;
     const gradient = context.createRadialGradient(x, y, 0, x, y, radius);
-    gradient.addColorStop(0, "rgba(255,255,255,.12)");
-    gradient.addColorStop(0.5, "rgba(255,255,255,.045)");
+    gradient.addColorStop(0, "rgba(255,255,255,.24)");
+    gradient.addColorStop(0.5, "rgba(255,255,255,.09)");
     gradient.addColorStop(1, "rgba(255,255,255,0)");
     context.fillStyle = gradient;
     context.fillRect(x - radius, y - radius, radius * 2, radius * 2);
   }
+  // Feather the texture boundary so drifting cloud banks never reveal a quad.
+  context.globalCompositeOperation = "destination-in";
+  const feather = context.createLinearGradient(0, 0, 0, 128);
+  feather.addColorStop(0, "rgba(255,255,255,0)");
+  feather.addColorStop(0.22, "rgba(255,255,255,1)");
+  feather.addColorStop(0.78, "rgba(255,255,255,1)");
+  feather.addColorStop(1, "rgba(255,255,255,0)");
+  context.fillStyle = feather;
+  context.fillRect(0, 0, 512, 128);
+  const horizontalFeather = context.createLinearGradient(0, 0, 512, 0);
+  horizontalFeather.addColorStop(0, "rgba(255,255,255,0)");
+  horizontalFeather.addColorStop(0.1, "rgba(255,255,255,1)");
+  horizontalFeather.addColorStop(0.9, "rgba(255,255,255,1)");
+  horizontalFeather.addColorStop(1, "rgba(255,255,255,0)");
+  context.fillStyle = horizontalFeather;
+  context.fillRect(0, 0, 512, 128);
+  return new THREE.CanvasTexture(canvas);
+}
+
+export function dropletTexture() {
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = 64;
+  const context = canvas.getContext("2d");
+  context.save();
+  context.translate(32, 32);
+  context.scale(0.19, 1);
+  const gradient = context.createRadialGradient(0, 0, 0, 0, 0, 30);
+  gradient.addColorStop(0, "rgba(255,255,255,1)");
+  gradient.addColorStop(0.3, "rgba(255,255,255,.7)");
+  gradient.addColorStop(1, "rgba(255,255,255,0)");
+  context.fillStyle = gradient;
+  context.fillRect(-32, -32, 64, 64);
+  context.restore();
   return new THREE.CanvasTexture(canvas);
 }
 
